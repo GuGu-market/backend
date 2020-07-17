@@ -2,7 +2,7 @@ from rest_framework import serializers
 from article.models import Article
 
 class ArticleSerializer(serializers.Serializer):
-    id = serializers.IntegerField()
+    id = serializers.IntegerField(allow_null=True)
     user_id = serializers.IntegerField()
     user_name = serializers.CharField(max_length=15)
     title = serializers.CharField(max_length=50)
