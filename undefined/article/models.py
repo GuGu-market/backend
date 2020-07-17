@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Article(models.Model):
+    id = models.AutoField(primary_key=True)
     user_id = models.IntegerField()
     user_name = models.CharField(max_length=15)
     title = models.CharField(max_length=50)
