@@ -9,8 +9,8 @@ class Article(models.Model):
     content = models.CharField(max_length=50)
     image = models.CharField(max_length=500)
     like_count = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    updated_at = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         db_table = 'article'
