@@ -33,10 +33,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'drf_yasg',
-    # 'users',
-    # 'signup',
-    # 'product',
     'category',
+    'article',
 ]
 
 MIDDLEWARE = [
@@ -52,10 +50,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'undefined.urls'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-        # 'rest_framework.permissions.DjangoModelPermissions',
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
 }
 
 TEMPLATES = [

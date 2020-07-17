@@ -9,9 +9,7 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-# from users import users_views
-# from signup import signup_views
-# from product import product_views
+from article import article_views
 from category import category_views
 
 router = routers.DefaultRouter()
@@ -30,14 +28,12 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-        url(r'^', include(router.urls)),
-        url('admin/', admin.site.urls),
-        url(r'^api-auth/', include('rest_framework.urls')),
-        url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-        url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-        url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-        # url('users/', users_views.Users.as_view()),
-        # url('product/', product_views.ProductView.as_view()),  
-        url('category/', category_views.CategoryView.as_view()),  
-
+    url(r'^', include(router.urls)),
+    url('admin/', admin.site.urls),
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    url('category/', category_views.CategoryView.as_view()),  
+    url('article/', article_views.ArticleView.as_view()),
 ]
