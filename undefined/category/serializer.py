@@ -4,8 +4,8 @@ from category.models import Category
 class CategorySerializer(serializers.Serializer):
     category_name = serializers.CharField(max_length=15)
     category_image = serializers.CharField(max_length=500)
-    created_at = serializers.DateTimeField(format="%Y-%m-%d",input_formats=['%Y-%m-%d',])
-    updated_at = serializers.DateTimeField(format="%Y-%m-%d",input_formats=['%Y-%m-%d',])
+    created_at = serializers.DateTimeField(input_formats=None)
+    updated_at = serializers.DateTimeField(input_formats=None)
 
     def create(self, validated_data):
         return Category.objects.create(**validated_data)

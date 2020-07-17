@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from article.models import Article
 from article.serializer import ArticleSerializer
 
@@ -8,11 +10,15 @@ from rest_framework import status
 
 class ArticleView(APIView):
     def get(self, request, format=None):
-        article = Article.objects.all()
-        serializer = ArticleSerializer(article, many=True)
+        articles = Article.objects.all()
+        serializer = ArticleSerializer(articles, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
+        request.data['created_at'] = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+        request.data['updated_at'] = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+
+        print(request.data['updated_at'])
         serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

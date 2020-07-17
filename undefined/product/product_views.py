@@ -6,20 +6,20 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from category.models import Category
-from category.serializer import CategorySerializer
+from product.models import Product
+from product.serializer import ProductSerializer
 
 
-class CategoryView(APIView):
+class ProductView(APIView):
     def get(self, request, format=None):
-        category = Category.objects.all()
-        serializer = CategorySerializer(category, many=True)
+        product = Product.objects.all()
+        serializer = ProductSerializer(product, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
         request.data['created_at'] = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
         request.data['updated_at'] = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-        serializer = CategorySerializer(data=request.data)
+        serializer = ProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
