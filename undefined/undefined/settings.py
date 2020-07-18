@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'article',
     'like',
     'user',
+    'point',
 ]
 
 MIDDLEWARE = [
