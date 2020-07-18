@@ -13,3 +13,6 @@ class User(models.Model):
 
     class Meta:
         db_table = 'user'
+
+    def get_by_natural_key(self, username):
+        return self.get(username=username)
