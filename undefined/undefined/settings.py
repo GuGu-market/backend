@@ -1,4 +1,5 @@
 import os, json
+from datetime import timedelta
 
 from django.core.exceptions import ImproperlyConfigured
 
@@ -20,7 +21,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = [get_secret_key("ALLOW_HOSTS")]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'category',
     'article',
     'like',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -51,8 +52,22 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'undefined.urls'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [],
-    'DEFAULT_PERMISSION_CLASSES': [],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+}
+
+JWT_AUTH = {
+    'JWT_SECRET_KEY': SECRET_KEY,
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': timedelta(days=7),
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=28),
 }
 
 TEMPLATES = [

@@ -12,7 +12,8 @@ from drf_yasg import openapi
 from article import article_views
 from category import category_views
 from like import like_views
-
+from auth import auth_views
+from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token
 
 router = routers.DefaultRouter()
 
@@ -39,4 +40,8 @@ urlpatterns = [
     url('category/', category_views.CategoryView.as_view()),  
     url('article/', article_views.ArticleView.as_view()),
     url('like/', like_views.LikeView.as_view()),
+    url('auth/', auth_views.AuthView.as_view()),
+    path('api/token/', obtain_jwt_token),
+    path('api/token/verify/', verify_jwt_token),
+    path('api/token/refresh/', refresh_jwt_token),
 ]
