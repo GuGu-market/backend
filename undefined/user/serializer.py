@@ -11,5 +11,8 @@ class UserSerializer(serializers.Serializer):
     phone = serializers.CharField(max_length=13)
     created_at = serializers.DateTimeField(format=None, input_formats=None, default_timezone=None)
 
+    class Meta:
+        model = User
+
     def create(self, validated_data):
         return Users.objects.create(**validated_data)
