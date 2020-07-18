@@ -11,6 +11,8 @@ from drf_yasg import openapi
 
 from article import article_views
 from category import category_views
+from like import like_views
+
 
 router = routers.DefaultRouter()
 
@@ -36,4 +38,5 @@ urlpatterns = [
     url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     url('category/', category_views.CategoryView.as_view()),  
     url('article/', article_views.ArticleView.as_view()),
+    url('like/', like_views.LikeView.as_view()),
 ]
