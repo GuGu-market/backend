@@ -22,4 +22,5 @@ class ArticleSerializer(serializers.Serializer):
         return Article.objects.update(**validated_data)
 
     def like_count_update(self, instance):
-        print(Article.save(instance))
+        instance.like_count += 1
+        Article.save(instance)
