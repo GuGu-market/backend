@@ -13,7 +13,7 @@ from category.serializer import CategorySerializer
 
 
 class CategoryView(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, format=None):
         category = Category.objects.all()

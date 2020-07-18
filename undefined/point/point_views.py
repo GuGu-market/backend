@@ -11,7 +11,7 @@ from rest_framework import permissions
 
 
 class PointView(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, format=None):
         user_id = request.data['user_id']
