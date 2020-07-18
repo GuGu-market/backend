@@ -12,5 +12,5 @@ from auth.service import get_user_access_token
 class AuthView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def post(self, request, format=None):
+    def get(self, request, format=None):
         return Response(get_user_access_token(request.data['access_token']))
