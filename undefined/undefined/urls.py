@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-    url('user/', user_views.UserView.as_view()),
+    path('user/<int:user_id>/', user_views.UserView.as_view()),
     url('category/', category_views.CategoryView.as_view()),  
     url('article/', article_views.ArticleView.as_view()),
     url('like/', like_views.LikeView.as_view()),

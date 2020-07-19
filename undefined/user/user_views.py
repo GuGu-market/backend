@@ -19,9 +19,7 @@ from user.serializer import UserSerializer
 
 
 class UserView(APIView):
-    def get(self, request, format=None):
-        user_id = request.data['user_id']
-        
+    def get(self, request, user_id, format=None):
         user = User.objects.get(id=user_id)
         user_serializer = UserSerializer(user)
 
@@ -40,7 +38,7 @@ class UserView(APIView):
         result = {
             'user': user_serializer.data
         }
-        
+
         result['user']['point'] = point_serializer.data
         result['user']['animal'] = json.loads(json.dumps(tmp_animals))
 
