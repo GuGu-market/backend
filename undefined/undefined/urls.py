@@ -10,6 +10,7 @@ from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from user import user_views
 from article import article_views
 from category import category_views
 from like import like_views
@@ -40,6 +41,7 @@ urlpatterns = [
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     url(r'^redoc/$', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    url('user/', user_views.UserView.as_view()),
     url('category/', category_views.CategoryView.as_view()),  
     url('article/', article_views.ArticleView.as_view()),
     url('like/', like_views.LikeView.as_view()),
