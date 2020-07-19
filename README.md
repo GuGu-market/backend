@@ -1,3 +1,14 @@
+## database 설치
+
+```sh
+# 우분투
+sudo apt-get install postgresql
+
+# 맥
+brew install postgresql
+```
+
+
 ## pip, venv 설치
 
 ```sh
