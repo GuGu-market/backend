@@ -17,7 +17,6 @@ from point.serializer import PointSerializer
 from user.models import User
 from user.serializer import UserSerializer
 
-
 class UserView(APIView):
     def get(self, request, user_id, format=None):
         user = User.objects.get(id=user_id)
