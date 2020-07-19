@@ -7,12 +7,8 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import permissions
-
 
 class PointView(APIView):
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
     def get(self, request, format=None):
         user_id = request.data['user_id']
         point = Point.objects.get(user_id=user_id)

@@ -11,8 +11,6 @@ from rest_framework import permissions
 
 
 class ArticleView(APIView):
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
     def get(self, request, format=None):
         articles = Article.objects.all()
         serializer = ArticleSerializer(articles, many=True)
@@ -22,7 +20,6 @@ class ArticleView(APIView):
         request.data['created_at'] = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
         request.data['updated_at'] = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
 
-        print(request.data['updated_at'])
         serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

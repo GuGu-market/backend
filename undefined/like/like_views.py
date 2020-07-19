@@ -6,7 +6,6 @@ from django.forms.models import model_to_dict
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import permissions
 
 from like.models import Like
 from like.serializer import LikeSerializer
@@ -14,8 +13,6 @@ from article.models import Article
 from article.serializer import ArticleSerializer
 
 class LikeView(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
     def get(self, request, format=None):
         like = Like.objects.all()
         serializer = LikeSerializer(like, many=True)

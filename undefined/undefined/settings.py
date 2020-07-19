@@ -70,7 +70,7 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': timedelta(days=7),
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=28),
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'AUTH_USER_MODEL': 'user.User'
+    # 'AUTH_USER_MODEL': 'user.User'
 }
 
 TEMPLATES = [

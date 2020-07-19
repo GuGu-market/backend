@@ -5,16 +5,12 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework import permissions
-
 
 from category.models import Category
 from category.serializer import CategorySerializer
 
 
 class CategoryView(APIView):
-    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
     def get(self, request, format=None):
         category = Category.objects.all()
         serializer = CategorySerializer(category, many=True)
