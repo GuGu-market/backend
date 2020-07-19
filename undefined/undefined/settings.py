@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'like',
     'user',
     'point',
+    'animal',
 ]
 
 MIDDLEWARE = [
